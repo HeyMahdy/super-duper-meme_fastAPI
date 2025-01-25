@@ -5,7 +5,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from models.base import Model1Base as Base
+from rest.models import Model1Base
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,7 +19,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Set metadata for autogeneration (use SQLAlchemy Base)
-target_metadata = Base.metadata
+target_metadata = Model1Base.metadata
 
 # Set SQLAlchemy URL dynamically using the environment variable
 config.set_main_option('sqlalchemy.url', os.getenv("DATABASE_URL"))
